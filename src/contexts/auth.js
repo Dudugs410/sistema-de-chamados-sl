@@ -106,7 +106,7 @@ function AuthProvider({ children }){
   }
 
   async function logout(){
-    await signOut();
+    await signOut(auth);
     localStorage.removeItem('@userData')
     setUser(null)
 
@@ -121,7 +121,9 @@ function AuthProvider({ children }){
         signUp,
         logout,
         loadingAuth,
-        loading
+        loading,
+        storageUser,
+        setUser
       }}
     >
       {children}
