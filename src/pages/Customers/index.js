@@ -5,11 +5,42 @@ import Title from "../../components/Title";
 
 import { FiUser } from "react-icons/fi";
 
+import { db } from "../../services/firebaseConnection";
+import { addDoc, collection } from "firebase/firestore";
+
+import {toast} from 'react-toastify'
+
 export default function Customers(){
 
     const[nome, setNome] = useState('')
     const[cnpj, setCnpj] = useState('')
     const[endereco, setEndereco] = useState('')
+
+    async function handleRegister(e){
+        e.preventDefault()
+
+        if(nome !== '' && cnpj !== '' && endereco !== ''){
+            await addDoc(collection(db, 'customers'),{
+                nomeFantasia: nome,
+                cnpj: cnpj,
+                endereco: endereco,
+            })
+            .then(()=>{
+                setNome('')
+                setCnpj('')
+                setEndereco('')
+                toast.success('Cliente Registrado com Sucesso')
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error('erro ao fazer cadastro')
+            })
+            
+        }else{
+            toast.error('Preencha todos os campos')
+        }
+
+    }
 
     return(
         <div>
@@ -20,7 +51,7 @@ export default function Customers(){
                     <FiUser size={25}/>
                 </Title>
                 <div className='container'>
-                    <form className='form-profile'>
+                    <form className='form-profile' onSubmit={handleRegister}>
                         
                         <label>Nome Fantasia</label>
                         <input
@@ -45,6 +76,8 @@ export default function Customers(){
                             value={endereco}
                             onChange={(e) => setEndereco(e.target.value)}
                         />
+
+                        <button type='submit'>Salvar</button>
 
                         
 
