@@ -6,6 +6,7 @@ import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
 import Customers from '../pages/Customers'
 import New from '../pages/New'
+import Users from '../pages/Users'
 
 import Private from './Private'
 
@@ -20,6 +21,7 @@ function RoutesApp(){
       <Route path="/customers" element={ <Private><Customers/></Private>}/>
       <Route path="/new" element={ <Private><New/></Private>}/>
       <Route path="/new/:id" element={ <Private><New/></Private>}/>
+      <Route path="/users" element={<Private><Users/></Private>}/>
     </Routes>
   )
 }
