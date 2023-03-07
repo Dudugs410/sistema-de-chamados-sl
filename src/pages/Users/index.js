@@ -1,60 +1,79 @@
 import { React, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Title from '../../components/Title';
 import Header from '../../components/Header';
+import ModalNewUser from '../../components/ModalNewUser';
 
+import getUsuarios from '../../services/usuarios';
 
-import api from '../../services/api';
-import axios from 'axios';
+import { FiUserPlus } from 'react-icons/fi';
 
 const Users = () => {
 
     ////////////////////////////////////////////////////////////////////
+  const [usuarios, setUsuarios] = useState([])
+  const [showPostModal, setShowPostModal] = useState(false)
+
+  useEffect(() => {
+    console.log('useEffect')
     
+    const loadUsuarios = async () =>{
+      const result = await getUsuarios()
+      console.log(result)
+      setUsuarios(result.data)
+    }
+
+    loadUsuarios()
     
+  }, []);
     
     ////////////////////////////////////////////////////////////////////
-    
+  
+
+    ////////////////////////////////////////////////////////////////////
 
     return(
-      
-      
-
       <div>
         <Header/>
         <Title/>
-
-        
-        
-        <div className='container'>
+        <div className='container content'>
           
           <h1>Lista de usuários</h1>
         
         </div>
 
-        <div>
-        <table className="table table-striped ">
-        <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Código</th>
-            <th scope="col">Data de Inserção</th>
-          </tr>
-        </thead>
-        <tbody >
-         
-            
-              <tr>
-                <td>teste</td>
-                <td>teste</td>
-                <td>teste</td>
-              </tr>
-              
-         
-        </tbody>
-      </table>
+        <button className="new" onClick={setShowPostModal}><FiUserPlus color={'#FFF'} size={25}/>Adicionar Usuário</button>
+
+        <div className='content'>
+          <table className="table table-striped ">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Código</th>
+              <th scope="col">Data de Inserção</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usuarios.map((usuarios)=>{
+              return(
+                <tr key={usuarios.usucodigo}>
+                    <td>{usuarios.usunome}</td>
+                    <td>{usuarios.usucodigo}</td>
+                    <td>{usuarios.datainsercao}</td>
+                  </tr>
+              )
+            })}
+          </tbody>
+        </table>
         </div>
         
+        {showPostModal && (
+          <ModalNewUser
+            close={ () => setShowPostModal(!showPostModal) }
+          />
+        )}
+
       </div>  
     )
 

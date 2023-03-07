@@ -2,8 +2,7 @@
 import api from "./api"
 
 const getUsuarios = async () => {
-    const resp = await api.get('/usuarios')
-
+    const resp = await api.get('/')
     return resp
 }
 
