@@ -18,7 +18,12 @@ export default function ModalNewUser({ close }){
     }
 
     function addUser(){
-    axios.post(api, {novoUsuario})
+        axios.post(api, {novoUsuario})
+        .then((response)=>{
+            console.log(response)
+        }, (error) => {
+            console.log(error)
+        })
     }
       
 
