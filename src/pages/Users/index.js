@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import Title from '../../components/Title';
 import Header from '../../components/Header';
@@ -14,18 +13,17 @@ const Users = () => {
     ////////////////////////////////////////////////////////////////////
   const [usuarios, setUsuarios] = useState([])
   const [showPostModal, setShowPostModal] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    console.log('useEffect')
     
     const loadUsuarios = async () =>{
       const result = await getUsuarios()
       console.log(result)
       setUsuarios(result.data)
+      setLoading(false)
     }
-
     loadUsuarios()
-    
   }, []);
     
     ////////////////////////////////////////////////////////////////////
@@ -33,6 +31,18 @@ const Users = () => {
 
     ////////////////////////////////////////////////////////////////////
 
+    if(loading){
+      return(
+        <div>
+          <Header/>
+          <Title/>
+          <div className="container content">
+            <h1>Lista de usuários</h1>
+            <span>Buscando usuários...</span>
+          </div>
+        </div>
+      )
+    }
     return(
       <div>
         <Header/>
