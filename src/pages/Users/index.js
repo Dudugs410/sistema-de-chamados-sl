@@ -8,6 +8,8 @@ import getUsuarios from '../../services/usuarios';
 
 import { FiUserPlus } from 'react-icons/fi';
 
+import './users.css'
+
 const Users = () => {
 
     ////////////////////////////////////////////////////////////////////
@@ -38,8 +40,8 @@ const Users = () => {
           <Title/>
           <div className="container content">
             <h1>Lista de usuários</h1>
-            <span>Buscando usuários...</span>
           </div>
+          <span className='loading'>Buscando usuários...</span>
         </div>
       )
     }

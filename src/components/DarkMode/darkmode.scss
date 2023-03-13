@@ -1,0 +1,15 @@
+
+
+.darkmode, checkbox{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+input:active{
+    border: solid 1px white;
+    border-radius: 12px;
+    transition: all 0.4s;
+    -webkit-transition: .4s;
+}
+

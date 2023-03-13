@@ -1,12 +1,11 @@
 import { useState } from "react"
 import { FiX } from 'react-icons/fi'
 import { toast } from "react-toastify"
-import api from "../../services/api"
+import api from "../../services/api2"
 import '../Modal/modal.css'
-import getUsuarios from "../../services/usuarios"
-import md5 from "md5"
+import getUsuarios from "../../services/usuarios2"
 
-export default function ModalNewUser({ close }){
+export default function ModalNewUser2({ close }){
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [login, setLogin] = useState('')
@@ -17,7 +16,7 @@ export default function ModalNewUser({ close }){
         usunome: nome,
         usuemail: email,
         usulogin: login,
-        ususenha: md5(senha),
+        ususenha: senha,
         usucontabloqueada: false,
         usunecessitatrocarsenha: false,
         usuariomodificacao: 2,
@@ -34,8 +33,8 @@ export default function ModalNewUser({ close }){
         console.log(nome)
         console.log(email)
         console.log(login)
-        console.log(md5(senha))
-        api.post('/', {novoUsuario}, {mode: 'cors'})
+        console.log(senha)
+        api.post('/', {novoUsuario})
         .then((response)=>{
             console.log(response)
             let usuarios = []
@@ -59,7 +58,7 @@ export default function ModalNewUser({ close }){
           <main className="content">
             <h2>Novo Usuário</h2>
 
-            <span>(usuario salvatore)</span>
+            <span>usuario timmit</span>
   
             <form className='form-profile' onSubmit={addUser}>
                 <input type='text' placeholder="nome" onChange={(e) => setNome(e.target.value)}/>

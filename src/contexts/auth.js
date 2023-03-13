@@ -1,12 +1,13 @@
-import { useState, createContext, useEffect } from 'react'
+import { React, createContext, useEffect, useState } from 'react'
 import { auth, db } from '../services/firebaseConnection'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext({})
 
+// eslint-disable-next-line react/prop-types
 function AuthProvider({ children }){
   const [user, setUser] = useState(null)
   const [loadingAuth, setLoadingAuth] = useState(false)
@@ -26,39 +27,39 @@ function AuthProvider({ children }){
       setLoading(false)
     }
 
-    loadUser();
+    loadUser()
   },[])
 
   async function signIn(email, password){
     setLoadingAuth(true)
 
     await signInWithEmailAndPassword(auth, email, password)
-    .then(async (value)=> {
-      let uid = value.user.uid
+      .then(async (value)=> {
+        let uid = value.user.uid
 
-      const docRef = doc(db, 'users', uid)
-      const docSnap = await getDoc(docRef)
+        const docRef = doc(db, 'users', uid)
+        const docSnap = await getDoc(docRef)
 
-      let data = {
-        uid: uid,
-        nome: docSnap.data().nome,
-        email: value.user.email,
-        avatarUrl: docSnap.data().avatarUrl
-      }
+        let data = {
+          uid: uid,
+          nome: docSnap.data().nome,
+          email: value.user.email,
+          avatarUrl: docSnap.data().avatarUrl
+        }
       
-      setUser(data)
-      storageUser(data)
-      setLoadingAuth(false)
-      toast.success('Bem-vindo(a) de volta!')
-      navigate('/dashboard')
-    })
+        setUser(data)
+        storageUser(data)
+        setLoadingAuth(false)
+        toast.success('Bem-vindo(a) de volta!')
+        navigate('/dashboard')
+      })
 
-    .catch((error) => {
-      console.log(error)
-      setLoadingAuth(false)
-      toast.error('Erro ao fazer login')
-      alert('erro')
-    })
+      .catch((error) => {
+        console.log(error)
+        setLoadingAuth(false)
+        toast.error('Erro ao fazer login')
+        alert('erro')
+      })
   }
 
 
@@ -67,35 +68,35 @@ function AuthProvider({ children }){
     setLoadingAuth(true)
 
     await createUserWithEmailAndPassword(auth, email, password)
-    .then( async (value) => {
+      .then( async (value) => {
         let uid = value.user.uid
 
-        await setDoc(doc(db, "users", uid), {
+        await setDoc(doc(db, 'users', uid), {
           nome: name,
           avatarUrl: null
         })
-        .then( () => {
+          .then( () => {
 
-          let data = {
-            uid: uid,
-            nome: name,
-            email: value.user.email,
-            avatarUrl: null
-          }
+            let data = {
+              uid: uid,
+              nome: name,
+              email: value.user.email,
+              avatarUrl: null
+            }
 
-          setUser(data)
-          storageUser(data)
-          setLoadingAuth(false)
-          toast.success('Bem vindo ao sistema')
-          navigate('/dashboard')
+            setUser(data)
+            storageUser(data)
+            setLoadingAuth(false)
+            toast.success('Bem vindo ao sistema')
+            navigate('/dashboard')
           
-        })
+          })
 
-    })
-    .catch((error) => {
-      console.log(error)
-      setLoadingAuth(false)
-    })
+      })
+      .catch((error) => {
+        console.log(error)
+        setLoadingAuth(false)
+      })
 
   }
 
@@ -105,7 +106,7 @@ function AuthProvider({ children }){
   }
 
   async function logout(){
-    await signOut(auth);
+    await signOut(auth)
     localStorage.removeItem('@userData')
     setUser(null)
 
@@ -113,7 +114,7 @@ function AuthProvider({ children }){
 
   return(
     <AuthContext.Provider 
-        value={{
+      value={{
         signed: !!user,
         user,
         signIn,
