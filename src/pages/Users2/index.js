@@ -1,18 +1,21 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState} from 'react'
 
 import Title from '../../components/Title'
 import Header from '../../components/Header'
 import ModalNewUser2 from '../../components/ModalNewUser2'
+import ModalUserDetail from '../../components/ModalUserDetail'
 
 import getUsuarios from '../../services/usuarios2'
 
-import { FiUserPlus } from 'react-icons/fi'
+import { FiUserPlus, FiZoomIn } from 'react-icons/fi'
 
 const Users = () => {
 
   ////////////////////////////////////////////////////////////////////
   const [usuarios, setUsuarios] = useState([])
+  const [currentUsuario, setCurrentUsuario] = useState({})
   const [showPostModal2, setShowPostModal2] = useState(false)
+  const [showModalUserDetail, setShowModalUserDetail] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -27,7 +30,6 @@ const Users = () => {
   }, [])
     
   ////////////////////////////////////////////////////////////////////
-  
 
 
   ////////////////////////////////////////////////////////////////////
@@ -37,6 +39,7 @@ const Users = () => {
       <div>
         <Header/>
         <Title/>
+        
         <div className="container content">
           <h1>Lista de usuários</h1>
         </div>
@@ -44,6 +47,12 @@ const Users = () => {
       </div>
     )
   }
+
+  const handleCurrentUsuario = (index) => {
+    setCurrentUsuario(usuarios[index])
+    setShowModalUserDetail(true)
+  }
+
   return(
     <div>
       <Header/>
@@ -63,15 +72,17 @@ const Users = () => {
               <th scope="col">Nome</th>
               <th scope="col">Código</th>
               <th scope="col">Data de Inserção</th>
+              <th scope="col">info</th>
             </tr>
           </thead>
           <tbody>
-            {usuarios.map((usuarios)=>{
+            {usuarios.map((usuario, index)=>{
               return(
-                <tr key={usuarios.CODIGO}>
-                  <td>{usuarios.NOME}</td>
-                  <td>{usuarios.CODIGO}</td>
-                  <td>{usuarios.DATAINSERCAO}</td>
+                <tr key={usuario.CODIGO}>
+                  <td>{usuario.NOME}</td>
+                  <td>{usuario.CODIGO}</td>
+                  <td>{usuario.DATAINSERCAO}</td>
+                  <td><button className='new' onClick={() => handleCurrentUsuario(index)}><FiZoomIn color={'#FFF'} size={25}/></button></td>
                 </tr>
               )
             })}
@@ -83,6 +94,12 @@ const Users = () => {
         <ModalNewUser2
           close={ () => setShowPostModal2(!showPostModal2) }
         />
+      )}
+
+      {showModalUserDetail && (
+        <ModalUserDetail
+            usuario={currentUsuario}
+            close={ () => setShowModalUserDetail(!showModalUserDetail) }/>
       )}
 
     </div>  

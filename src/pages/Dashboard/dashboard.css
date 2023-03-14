@@ -94,6 +94,12 @@
     font-size: 1.1em;
     color: #FFF;
   }
+
+  .new2{
+    background-color: #181c2e;
+    display: flex-end;
+    border-radius: 4px;
+  }
   
   @media screen and (max-width: 600px){
       table{
@@ -132,5 +138,14 @@
         float: left;
         font-weight: bold;
         text-transform: uppercase;
+      }
+
+      .new2{
+        
+        display: flex;
+        align-items:flex-end;
+        justify-content: flex-end;
+        background-color: #181c2e;
+        border-radius: 4px;
       }
   }
