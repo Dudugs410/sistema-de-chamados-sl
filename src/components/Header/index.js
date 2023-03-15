@@ -25,9 +25,7 @@ export default function Header(){
             
       <Link to ='/customers'><FiUser color="#FFF" size={24}/>Clientes</Link>
             
-      <Link to ='/profile'><FiSettings color="#FFF" size={24}/>Perfil</Link>
-
-      <Link to='/users'><FiUsers color="#FFF" size={24}/>Usuários Salvatore</Link>
+      <Link to ='/profile2'><FiSettings color="#FFF" size={24}/>Perfil</Link>
 
       <Link to='/users2'><FiUsers color="#FFF" size={24}/>Usuários Timmit</Link>
 

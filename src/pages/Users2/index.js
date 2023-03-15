@@ -7,7 +7,7 @@ import ModalUserDetail from '../../components/ModalUserDetail'
 
 import getUsuarios from '../../services/usuarios2'
 
-import { FiUserPlus, FiZoomIn } from 'react-icons/fi'
+import { FiUserCheck, FiUserPlus, FiZoomIn } from 'react-icons/fi'
 
 const Users = () => {
 
@@ -38,10 +38,10 @@ const Users = () => {
     return(
       <div>
         <Header/>
-        <Title/>
-        
         <div className="container content">
-          <h1>Lista de usuários</h1>
+          <Title name="Lista de Usuários">
+            <FiUserCheck size={25} />
+          </Title>
         </div>
         <span className='loading'>Buscando usuários...</span>
       </div>
@@ -56,10 +56,11 @@ const Users = () => {
   return(
     <div>
       <Header/>
-      <Title/>
-      <div className='container content'>
-          
-        <h1>Lista de usuários</h1>
+      
+      <div className='content'>
+      <Title name="Lista de Usuários">
+            <FiUserCheck size={25} />
+          </Title>
         
       </div>
 
@@ -82,7 +83,7 @@ const Users = () => {
                   <td>{usuario.NOME}</td>
                   <td>{usuario.CODIGO}</td>
                   <td>{usuario.DATAINSERCAO}</td>
-                  <td><button className='new' onClick={() => handleCurrentUsuario(index)}><FiZoomIn color={'#FFF'} size={25}/></button></td>
+                  <td><button className='new2' onClick={() => handleCurrentUsuario(index)}><FiZoomIn color={'#FFF'} size={25}/></button></td>
                 </tr>
               )
             })}

@@ -1,6 +1,6 @@
 
 import { FiX } from 'react-icons/fi'
-import './modal.css';
+import '../Modal/modal.css';
 
 export default function ModalUserDetail({ usuario, close }){
 
@@ -19,25 +19,25 @@ export default function ModalUserDetail({ usuario, close }){
 
           <div className="row">
             <span>
-              Nome: {usuario.NOME}
+              Nome: <span className='email info'>{usuario.NOME}</span>
+            </span>
+          </div>
+
+          <div className="row">
+            <span className="info">
+              E-mail: <span className='email info'>{usuario.EMAIL}</span>
             </span>
           </div>
 
           <div className="row">
             <span>
-              E-mail: {usuario.EMAIL}
+              Data de cadastro: <span className="email info">{usuario.DATAINSERCAO}</span>
             </span>
           </div>
 
           <div className="row">
             <span>
-              Data de cadastro: {usuario.DATAINSERCAO}
-            </span>
-          </div>
-
-          <div className="row">
-            <span>
-              Ativo?: { usuario.ATIVO ? 'sim' : 'não'}
+              Status: { usuario.ATIVO ? <span className="email info">Ativo</span> : <span className="email info">Inativo</span>}
             </span>
           </div>
 

@@ -8,7 +8,7 @@ import { AuthContext } from '../../contexts/auth'
 
 import { toast } from 'react-toastify'
 
-import '../Profile/profile.css'
+import './profile2.css'
 
 export default function Profile2(){
 

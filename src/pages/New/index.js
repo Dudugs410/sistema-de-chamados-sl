@@ -2,7 +2,6 @@
 import { useState, useEffect, useContext  } from 'react'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
-import Profile from '../Profile'
 import { FiPlusCircle} from 'react-icons/fi'
 
 import {AuthContext} from '../../contexts/auth'

@@ -16,17 +16,22 @@
     right: 0;
     margin: 0 auto;
     padding: 4em 2em;
-    background-color: #FFF;
+    background-color: #121212;
+    border: yellowgreen solid 2px;
     box-shadow: 0 0 20px rgba(0,0,0, 0.8);
+  }
+
+  .container>main{
+    border: solid white 2px;
   }
   
   .close{
-    background-color: #f65835;
-    border:0;
+    background-color: #181c2e;
+    border:solid 2px;
     border-radius: 5px;
     position: absolute;
     top: 15px;
-    left: 15px;
+    left: 33px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +58,10 @@
     padding: 2px 8px;
   }
   
+  span .info{
+    font-weight:lighter;
+  }
+
   .row{
     margin-bottom: 1em;
   }
@@ -66,4 +75,16 @@
   .status-badge{
     margin-left: 1em;
     border-radius: 2px;
+  }
+
+  .modal main{
+    background-color:#181c2e;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+  }
+
+  .email{
+    color: yellowgreen;
   }

@@ -5,6 +5,7 @@ import api from "../../services/api2"
 import '../Modal/modal.css'
 import getUsuarios from "../../services/usuarios2"
 
+
 export default function ModalNewUser2({ close }){
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')

@@ -17,12 +17,30 @@
   .new svg{
     margin-right: 5px;
   }
+
+  svg:hover{
+    color: yellowgreen;
+  }
   
+  svg circle, line, path, polyline{
+    transition:all ease-in-out 0.4s;
+    color: yellowgreen;
+  }
+
   .new:hover{
     color: yellowgreen;
     background-color: rgb(12, 16, 26);
-}
+  }
   
+  .new2 svg{
+    padding: 2px;
+    margin:0 2px;
+  }
+
+  .new2:hover{
+    background-color: rgb(12, 16, 26);
+  }
+
   .dashboard{
     display: flex;
     justify-content: center;
@@ -148,4 +166,5 @@
         background-color: #181c2e;
         border-radius: 4px;
       }
+      
   }
