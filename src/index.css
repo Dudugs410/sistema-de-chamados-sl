@@ -9,9 +9,14 @@ html, body, #root{
 }
 
 body{
+  height: 100%;
+  width: 100%;
   font: 14px;
   font-family: sans-serif;
   background-color: #adadad;
+  background-image: url("./assets/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 a{
