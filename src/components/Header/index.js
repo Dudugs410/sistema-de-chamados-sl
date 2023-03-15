@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 import { AuthContext } from '../../contexts/auth'
-import {FiHome, FiMoon, FiSettings, FiSun, FiUser, FiUsers} from 'react-icons/fi'
+import {FiHome, FiMoon, FiSettings, FiSun, FiUser, FiUsers, FiCheckSquare} from 'react-icons/fi'
 
 import './header.css'
 import DarkMode from '../DarkMode'
@@ -21,7 +21,7 @@ export default function Header(){
         <img src={ user.avatarUrl === null ? avatarImg : user.avatarUrl } alt="Foto do usuario" />
       </div>
 
-      <Link to ='/dashboard'><FiHome color="#FFF" size={24}/>Chamados</Link>
+      <Link to ='/dashboard'><FiHome color="#FFF" size={24}/>Home</Link>
             
       <Link to ='/customers'><FiUser color="#FFF" size={24}/>Clientes</Link>
             
@@ -29,10 +29,8 @@ export default function Header(){
 
       <Link to='/users2'><FiUsers color="#FFF" size={24}/>Usuários Timmit</Link>
 
-      <Link to='/chamados'><FiUsers color="#FFF" size={24}/>Chamados</Link>
-
+      <Link to='/chamados'><FiCheckSquare color="#FFF" size={24}/>Chamados</Link>
       
-
     </div>
   )
 }

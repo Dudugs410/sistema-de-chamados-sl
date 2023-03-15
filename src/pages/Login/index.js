@@ -1,8 +1,9 @@
 import { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import md5 from 'md5'
 
-import getUsuarios from '../../services/usuarios'
+import getUsuarios from '../../services/usuarios2'
 
 import './login.css'
 
@@ -33,10 +34,10 @@ const Login = () =>{
     console.log(usuarios)
         
 
-    usuarios.find((usuarios) => usuarios.usulogin === login)
-    if(usuarios.find((usuarios) => usuarios.usulogin === login)){
+    usuarios.find((usuarios) => usuarios.LOGIN === login)
+    if(usuarios.find((usuarios) => usuarios.LOGIN === login)){
       console.log('usuario encontrado')
-      if(usuarios.find((usuarios) => usuarios.ususenha === senha)){
+      if(usuarios.find((usuarios) => usuarios.SENHA === md5(senha))){
         console.log('Login bem sucedido')
         setLogado(true)
         console.log(logado)

@@ -13,6 +13,14 @@
     color: #FFF;
     transition: ease-in-out 0.3s;
   }
+
+  .divBtn{
+    width: 100vw;
+    height: 42px;
+    padding-top: 4px;
+    display: flex;
+    align-items: center;
+  }
   
   .new svg{
     margin-right: 5px;
@@ -167,4 +175,7 @@
         border-radius: 4px;
       }
       
+      .new2{
+        margin-left: 90%;
+      }
   }

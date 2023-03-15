@@ -40,7 +40,7 @@ const Users = () => {
         <Header/>
         <div className="container content">
           <Title name="Lista de Usuários">
-            <FiUserCheck size={25} />
+            <FiUserCheck size={24} />
           </Title>
         </div>
         <span className='loading'>Buscando usuários...</span>
@@ -59,12 +59,10 @@ const Users = () => {
       
       <div className='content'>
       <Title name="Lista de Usuários">
-            <FiUserCheck size={25} />
+            <FiUserCheck size={24} />
           </Title>
-        
+          <button className="new" onClick={setShowPostModal2}><FiUserPlus color={'#FFF'} size={24}/>Adicionar Usuário timmit</button>
       </div>
-
-      <button className="new" onClick={setShowPostModal2}><FiUserPlus color={'#FFF'} size={25}/>Adicionar Usuário timmit</button>
 
       <div className='content'>
         <table className="table table-striped ">
@@ -80,10 +78,10 @@ const Users = () => {
             {usuarios.map((usuario, index)=>{
               return(
                 <tr key={usuario.CODIGO}>
-                  <td>{usuario.NOME}</td>
-                  <td>{usuario.CODIGO}</td>
-                  <td>{usuario.DATAINSERCAO}</td>
-                  <td><button className='new2' onClick={() => handleCurrentUsuario(index)}><FiZoomIn color={'#FFF'} size={25}/></button></td>
+                  <td data-label="Usuário">{usuario.NOME}</td>
+                  <td data-label="Código">{usuario.CODIGO}</td>
+                  <td data-label="Data do cadastro">{usuario.DATAINSERCAO}</td>
+                  <td data-label="Detalhes"><button className='new2' onClick={() => handleCurrentUsuario(index)}><FiZoomIn color={'#FFF'} size={25}/></button></td>
                 </tr>
               )
             })}

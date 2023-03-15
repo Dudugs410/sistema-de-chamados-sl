@@ -10,6 +10,10 @@
     padding-right:0.8em;
 }
 
+main.content{
+    margin-left: 0;
+}
+
 .content>.title{
     display: flex;
     flex-direction: row;
