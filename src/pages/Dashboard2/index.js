@@ -49,7 +49,9 @@ export default function Dashboard2(){
 
           <div className="container dashboard">
             <span>Buscando chamados...</span>
+
             <CameraCapture/>
+
           </div>
         </div>
       </div>

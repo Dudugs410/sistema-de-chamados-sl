@@ -46,7 +46,7 @@ export default function Profile2(){
     <div>
       <Header/>
   
-      <div className="content">
+      <div className="content dropShadow">
         <Title name="Minha conta">
           <FiSettings size={25} />
         </Title>

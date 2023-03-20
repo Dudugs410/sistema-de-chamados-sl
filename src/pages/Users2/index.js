@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 import ModalNewUser2 from '../../components/ModalNewUser2'
 import ModalUserDetail from '../../components/ModalUserDetail'
 
-import getUsuarios from '../../services/usuarios2'
+import { getUsuarios } from '../../services/usuarios2'
 
 import { FiUserCheck, FiUserPlus, FiZoomIn } from 'react-icons/fi'
 
@@ -57,14 +57,14 @@ const Users = () => {
     <div>
       <Header/>
       
-      <div className='content'>
+      <div className='content dropShadow'>
       <Title name="Lista de Usuários">
             <FiUserCheck size={24} />
           </Title>
           <button className="new" onClick={setShowPostModal2}><FiUserPlus color={'#FFF'} size={24}/>Adicionar Usuário timmit</button>
       </div>
 
-      <div className='content'>
+      <div className='content dropShadow'>
         <table className="table table-striped ">
           <thead>
             <tr>

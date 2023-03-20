@@ -46,8 +46,8 @@ export default function Customers(){
         <div>
             <Header/>
             
-            <div className='content'>
-                <Title name='Clients'>
+            <div className='content dropShadow'>
+                <Title name='Clientes'>
                     <FiUser size={25}/>
                 </Title>
                 <div className='container'>

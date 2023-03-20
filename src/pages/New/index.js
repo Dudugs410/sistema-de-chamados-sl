@@ -158,7 +158,7 @@ export default function New(){
     <div>
       <Header/>
 
-      <div className="content">
+      <div className="content dropShadow">
         <Title name={id ? "Editando Chamado" : "Novo Chamado"}>
           <FiPlusCircle size={25}/>
         </Title>

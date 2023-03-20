@@ -13,6 +13,7 @@ import { format } from 'date-fns'
 import Modal from '../../components/Modal'
 
 import './dashboard.css'
+import '../../index.css'
 
 const listRef = collection(db, "chamados")
 
@@ -121,7 +122,7 @@ export default function Dashboard(){
     <div>
       <Header/>
 
-      <div className="content">
+      <div className="content dropShadow">
         <Title name="Home">
           <FiMessageSquare size={25} />
         </Title>

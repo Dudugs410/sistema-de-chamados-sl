@@ -2,8 +2,9 @@ import { useState } from "react"
 import { FiX } from 'react-icons/fi'
 import { toast } from "react-toastify"
 import api from "../../services/api2"
+
 import '../Modal/modal.css'
-import getUsuarios from "../../services/usuarios2"
+import { getUsuarios, postUsuario } from "../../services/usuarios2"
 
 
 export default function ModalNewUser2({ close }){
@@ -28,6 +29,13 @@ export default function ModalNewUser2({ close }){
         grucodigoNavigation: null
     }
 
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        }
+      }
+
 
     function addUser(e){
         e.preventDefault()
@@ -35,7 +43,7 @@ export default function ModalNewUser2({ close }){
         console.log(email)
         console.log(login)
         console.log(senha)
-        api.post('/', {novoUsuario})
+        api.post('/', {novoUsuario}, config)
         .then((response)=>{
             console.log(response)
             let usuarios = []
@@ -50,7 +58,7 @@ export default function ModalNewUser2({ close }){
     return(
         
       <div className="modal">
-        <div className="container">
+        <div className="container dropShadow">
           <button className="close" onClick={ close }>
             <FiX size={25} color="#FFF" />
             Voltar

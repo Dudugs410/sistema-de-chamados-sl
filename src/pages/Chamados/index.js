@@ -38,7 +38,7 @@ const Chamados = () =>{
         <>
             <Header/>
 
-            <div className="content">
+            <div className="content dropShadow">
                 <Title name="Chamados">
                     <FiMessageSquare size={24}/>
                 </Title>
@@ -46,7 +46,7 @@ const Chamados = () =>{
                 <button className="new"><FiCheckSquare color="#FFF" size={24}/>Novo Chamado</button>
             </div>
 
-            <div className="content">
+            <div className="content dropShadow">
                 <table className="table table-striped ">
                     <thead>
                         <tr>
@@ -64,9 +64,7 @@ const Chamados = () =>{
                             <td data-label="Assunto">place_holder</td>
                             <td data-label="Status">place_holder</td>
                             <td data-label="Data de Criação">place_holder</td>
-                            <td data-label="Detalhes"><button className="action" style={{ backgroundColor: '#3583f6' }} onClick={ () => toggleModal()}>
-                            <FiSearch color='#FFF' size={17}/>
-                          </button></td>
+                            <td data-label="Detalhes"><button className="new2" onClick={ () => toggleModal()}><FiZoomIn color='#FFF' size={24}/></button></td>
                         </tr>
                     </tbody>
             </table>

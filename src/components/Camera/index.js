@@ -29,8 +29,8 @@ function CameraCapture() {
     <div>
       <video ref={videoRef}></video>
       <canvas ref={canvasRef}></canvas>
-      <button onClick={startCapture}>Start capture</button>
-      <button onClick={captureImage}>Capture image</button>
+      <button className="new" onClick={startCapture}>Video</button>
+      <button className="new" onClick={captureImage}>Image</button>
     </div>
   );
 }

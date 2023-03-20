@@ -2,18 +2,13 @@ import { React, useContext, useState } from 'react'
 import avatarImg from '../../assets/avatar.png'
 import { Link } from 'react-router-dom'
 
-
 import { AuthContext } from '../../contexts/auth'
-import {FiHome, FiMoon, FiSettings, FiSun, FiUser, FiUsers, FiCheckSquare} from 'react-icons/fi'
+import {FiHome, FiSettings, FiUser, FiUsers, FiCheckSquare} from 'react-icons/fi'
 
 import './header.css'
-import DarkMode from '../DarkMode'
-
 
 export default function Header(){
   const { user } = useContext(AuthContext)
-
-  const [dark, setDark] = useState(false)
 
   return(
     <div className="sidebar">
@@ -27,7 +22,7 @@ export default function Header(){
             
       <Link to ='/profile2'><FiSettings color="#FFF" size={24}/>Perfil</Link>
 
-      <Link to='/users2'><FiUsers color="#FFF" size={24}/>Usuários Timmit</Link>
+      <Link to='/users2'><FiUsers color="#FFF" size={24}/>Usuários</Link>
 
       <Link to='/chamados'><FiCheckSquare color="#FFF" size={24}/>Chamados</Link>
       

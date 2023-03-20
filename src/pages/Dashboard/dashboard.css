@@ -43,10 +43,15 @@
   .new2 svg{
     padding: 2px;
     margin:0 2px;
+    
   }
 
   .new2:hover{
     background-color: rgb(12, 16, 26);
+  }
+
+  button.new{
+    border: solid white 2px;
   }
 
   .dashboard{

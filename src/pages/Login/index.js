@@ -1,9 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import md5 from 'md5'
 
-import getUsuarios from '../../services/usuarios2'
+import { AuthContext } from '../../contexts/auth'
+
+import { getUsuarios, postUsuario } from '../../services/usuarios2'
 
 import './login.css'
 
@@ -14,10 +16,16 @@ const Login = () =>{
   const[logado, setLogado] = useState(false)
   const[usuarios, setUsuarios] = useState([])
   const[loading, setLoading] = useState(true)
+  const[codUsuario, setCodUsuario] = useState('')
 
   const navigate = useNavigate()
+  const { signIn } = useContext(AuthContext)
 
   useEffect(()=>{
+    console.log(logado)
+    if(logado){
+      navigate('/dashboard2')
+    }
     const loadUsuarios = async () =>{
       const result = await getUsuarios()
       setUsuarios(result)
@@ -40,8 +48,9 @@ const Login = () =>{
       if(usuarios.find((usuarios) => usuarios.SENHA === md5(senha))){
         console.log('Login bem sucedido')
         setLogado(true)
+        setCodUsuario(usuarios.CODIGO)
         console.log(logado)
-        navigate('/dashboard')
+        navigate('/dashboard2')
       }else{
         console.log('senha incorreta')
       }
