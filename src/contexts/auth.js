@@ -5,7 +5,9 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { getUsuarios } from '../services/usuarios2'
+
 import md5 from 'md5'
+
 
 export const AuthContext = createContext({})
 
@@ -178,7 +180,8 @@ function AuthProvider({ children }){
         codUsuario,
         setCodUsuario,
         setLogin,
-        setSenha
+        setSenha,
+        logado
       }}
     >
       {children}

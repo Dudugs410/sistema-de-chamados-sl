@@ -35,13 +35,14 @@ export default function ModalNewUser({ close }){
         console.log(email)
         console.log(login)
         console.log(md5(senha))
-        api.post('/', {novoUsuario}, {mode: 'cors'})
+        api.post('/', {novoUsuario})
         .then((response)=>{
             console.log(response)
             let usuarios = []
             usuarios = getUsuarios()
             toast.success('Usuário cadastrado com sucesso! Código:' + usuarios[usuarios.length])
         }, (error) => {
+            toast.error('Erro ao cadastrar')
             console.log(error)
         })
     }

@@ -2,8 +2,10 @@ import { useState } from "react"
 import { FiX } from 'react-icons/fi'
 import { toast } from "react-toastify"
 import api from "../../services/api2"
+import axios from "axios"
 
 import '../Modal/modal.css'
+import './modalNewUser2.css'
 import { getUsuarios, postUsuario } from "../../services/usuarios2"
 
 
@@ -29,21 +31,13 @@ export default function ModalNewUser2({ close }){
         grucodigoNavigation: null
     }
 
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        }
-      }
-
-
     function addUser(e){
         e.preventDefault()
         console.log(nome)
         console.log(email)
         console.log(login)
         console.log(senha)
-        api.post('/', {novoUsuario}, config)
+        axios.post('https://app.timmit.com.br/v2/api/usuario', {novoUsuario})
         .then((response)=>{
             console.log(response)
             let usuarios = []
@@ -75,7 +69,7 @@ export default function ModalNewUser2({ close }){
                 <input type='text' placeholder="login" onChange={(e) => setLogin(e.target.value)}/>
                 <input type='text' placeholder="senha" onChange={(e) => setSenha(e.target.value)}/>
 
-                <button className="btn btn-primary" type='submit'>Salvar</button>
+                <button className=" outline-btn" type='submit'>Salvar</button>
             </form>
   
           </main>
