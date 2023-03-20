@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from 'react'
-import {AuthContext} from '../../contexts/auth'
+import { AuthContext } from '../../contexts/auth'
 
 import Header from '../../components/Header'
 import Title from '../../components/Title'
@@ -14,6 +14,7 @@ import getChamados from '../../services/chamados'
 
 export default function Dashboard2(){
   const { logout } = useContext(AuthContext)
+  const { logado } = useContext(AuthContext)
 
   const [chamados, setChamados] = useState([])
   const [loading, setLoading] = useState(true)
@@ -30,6 +31,7 @@ export default function Dashboard2(){
     }
 
     loadChamados()
+    console.log(logado)
   }, [])
 
   function toggleModal(item){
@@ -43,7 +45,7 @@ export default function Dashboard2(){
         <Header/>
 
         <div className="content">
-          <Title name="Tickets">
+          <Title name="Página Inicial">
             <FiMessageSquare size={25} />
           </Title>
 

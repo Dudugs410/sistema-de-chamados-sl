@@ -4,14 +4,22 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { getUsuarios } from '../services/usuarios2'
+import md5 from 'md5'
 
 export const AuthContext = createContext({})
 
-// eslint-disable-next-line react/prop-types
 function AuthProvider({ children }){
   const [user, setUser] = useState(null)
   const [loadingAuth, setLoadingAuth] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [userCod, setUserCod] = useState('')
+  const [codUsuario, setCodUsuario] = useState('')
+  const [logado, setLogado] = useState(false)
+  const [login, setLogin] = useState('')
+  const [senha, setSenha] = useState('')
+  
+  const[usuarios, setUsuarios] = useState([])
 
   const navigate = useNavigate()
 
@@ -28,6 +36,20 @@ function AuthProvider({ children }){
     }
 
     loadUser()
+  },[])
+
+  useEffect(()=>{
+    console.log(logado)
+    if(logado){
+      navigate('/dashboard2')
+    }
+    const loadUsuarios = async () =>{
+      const result = await getUsuarios()
+      setUsuarios(result)
+      setUsuarios(result.data)
+      setLoading(false)
+    }
+    loadUsuarios()
   },[])
 
   async function signIn(email, password){
@@ -111,6 +133,34 @@ function AuthProvider({ children }){
     setUser(null)
 
   }
+  //////////////////////////////////////////////////////////////////
+
+  async function logaUsuario(e){
+    e.preventDefault()
+
+    console.log(login)
+    console.log(usuarios)
+        
+
+    usuarios.find((usuarios) => usuarios.LOGIN === login)
+    if(usuarios.find((usuarios) => usuarios.LOGIN === login)){
+      console.log('usuario encontrado')
+      if(usuarios.find((usuarios) => usuarios.SENHA === md5(senha))){
+        console.log('Login bem sucedido')
+        console.log('antes do set:', logado)
+        setLogado(true)
+        console.log('depois do set:', logado)
+        setUserCod(usuarios.CODIGO)
+        console.log(logado)
+        navigate('/dashboard2')
+      }else{
+        console.log('senha incorreta')
+      }
+    }else{
+      console.log('usuario não encontrado')
+    }
+
+  }
 
   return(
     <AuthContext.Provider 
@@ -123,7 +173,12 @@ function AuthProvider({ children }){
         loadingAuth,
         loading,
         storageUser,
-        setUser
+        setUser,
+        logaUsuario,
+        codUsuario,
+        setCodUsuario,
+        setLogin,
+        setSenha
       }}
     >
       {children}

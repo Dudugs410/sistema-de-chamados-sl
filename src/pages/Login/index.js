@@ -11,55 +11,13 @@ import './login.css'
 
 const Login = () =>{
 
-  const[login, setLogin] = useState('')
-  const[senha, setSenha] = useState('')
-  const[logado, setLogado] = useState(false)
-  const[usuarios, setUsuarios] = useState([])
   const[loading, setLoading] = useState(true)
-  const[codUsuario, setCodUsuario] = useState('')
-
   const navigate = useNavigate()
-  const { signIn } = useContext(AuthContext)
-
-  useEffect(()=>{
-    console.log(logado)
-    if(logado){
-      navigate('/dashboard2')
-    }
-    const loadUsuarios = async () =>{
-      const result = await getUsuarios()
-      setUsuarios(result)
-      setUsuarios(result.data)
-      setLoading(false)
-    }
-    loadUsuarios()
-  },[])
-
-  async function logaUsuario(e){
-    e.preventDefault()
-
-    console.log(login)
-    console.log(usuarios)
-        
-
-    usuarios.find((usuarios) => usuarios.LOGIN === login)
-    if(usuarios.find((usuarios) => usuarios.LOGIN === login)){
-      console.log('usuario encontrado')
-      if(usuarios.find((usuarios) => usuarios.SENHA === md5(senha))){
-        console.log('Login bem sucedido')
-        setLogado(true)
-        setCodUsuario(usuarios.CODIGO)
-        console.log(logado)
-        navigate('/dashboard2')
-      }else{
-        console.log('senha incorreta')
-      }
-    }else{
-      console.log('usuario não encontrado')
-    }
-
-  }
-
+  const { logaUsuario } = useContext(AuthContext)
+  const { login } = useContext(AuthContext)
+  const { senha } = useContext(AuthContext)
+  const { setLogin } = useContext(AuthContext)
+  const { setSenha } = useContext(AuthContext)
 
   return(
     <div className="container-center">
