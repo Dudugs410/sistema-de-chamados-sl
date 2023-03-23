@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { FiX } from 'react-icons/fi'
 import { toast } from "react-toastify"
-import api from "../../services/api2"
 import axios from "axios"
 
 import '../Modal/modal.css'
 import './modalNewUser2.css'
+
+
 import { getUsuarios, postUsuario } from "../../services/usuarios2"
+import { config } from "../../services/api2"
 
 
 export default function ModalNewUser2({ close }){
@@ -14,38 +16,46 @@ export default function ModalNewUser2({ close }){
     const [email, setEmail] = useState('')
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
+    const [sedcodigo, setSedcodigo] = useState('')
+    const [grucodigo, setGrucodigo] = useState('')
+    const [usuContaBloqueada, setUsuContaBloqueada] = useState(false)
+    const [usuNecessitatrocarsenha, setUsunecessitatrocarsenha] = useState(false)
+    const [ativo, setAtivo] = useState(true)
+    const [grucodgigoNavigation, setGrucodigoNavigation] = useState(null)
+    
     const novoUsuario = {
-        sedcodigo: 2,
-        grucodigo: 4,
-        usunome: nome,
-        usuemail: email,
-        usulogin: login,
-        ususenha: senha,
-        usucontabloqueada: false,
-        usunecessitatrocarsenha: false,
-        usuariomodificacao: 2,
-        datamodificacao: new Date(),
-        usuarioinsercao: 2,
-        datainsercao: new Date(),
-        ativo: true,
-        grucodigoNavigation: null
+        
+        GRUCODIGO: grucodigo,
+        SEDCODIGO: sedcodigo,
+        NOME: nome,
+        EMAIL: email,
+        LOGIN: login,
+        SENHA: senha,
+        NECESSITATROCASENHA: usuNecessitatrocarsenha,
+        CONTABLOQUEADA: usuContaBloqueada,
+        USUARIOINSERCAO: 2,
+        DATAINSERCAO: new Date(),
+        USUARIOMODIFICACAO: 2,
+        DATAMODIFICACAO: new Date(),
+        ATIVO: ativo,
     }
 
     function addUser(e){
         e.preventDefault()
-        console.log(nome)
-        console.log(email)
-        console.log(login)
-        console.log(senha)
-        axios.post('https://app.timmit.com.br/v2/api/usuario', {novoUsuario})
-        .then((response)=>{
-            console.log(response)
-            let usuarios = []
-            usuarios = getUsuarios()
-            toast.success('Usuário cadastrado com sucesso! Código:' + usuarios[usuarios.length])
-        }, (error) => {
-            console.log(error)
-        })
+        console.log('function addUser...')
+        console.log('usuario a ser adicionado: ')
+        console.log(novoUsuario)
+       
+    }
+
+    const handleAtivo = (e) => {
+      setAtivo(!e.target.checked)
+      console.log('ativo: ' + ativo)
+    }
+
+    const handleBloqueado = (e) => {
+      setAtivo(!e.target.checked)
+      console.log('bloqueado? : ' + ativo)
     }
       
 
@@ -69,6 +79,41 @@ export default function ModalNewUser2({ close }){
                 <input type='text' placeholder="login" onChange={(e) => setLogin(e.target.value)}/>
                 <input type='text' placeholder="senha" onChange={(e) => setSenha(e.target.value)}/>
 
+                <div className='div-selects'>
+                  <div className='div-dropdown'>
+                    <select defaultValue = '' onChange={ (e) => setSedcodigo(Number(e.target.value))} className='form-select select-cadastro'>SedCodigo:
+                      <option defaultValue>SedCodigo</option>
+                      <option value = '1'>1</option>
+                      <option value = '2'>2</option>
+                      <option value = '3'>3</option>
+                      <option value = '4'>4</option>
+                    </select>
+
+                    <select defaultValue = '' onChange={ (e) => setGrucodigo(Number(e.target.value))} className = 'form-select select-cadastro'  placeholder="GruCodigo">GruCodigo:
+                      <option defaultValue>GruCodigo</option>
+                      <option value = '1'>1</option>
+                      <option value = '2'>2</option>
+                      <option value = '3'>3</option>
+                      <option value = '4'>4</option>
+                    </select>
+                  </div>
+                </div>
+              
+                <div className='div-flags'>
+                  <div className='flag-line'>
+                    <label className='label-cadastro'>usuContaBloqueada:</label><input type='checkbox' className='checkbox-cadastro' onChange={handleBloqueado}></input>
+                  </div>
+                  
+                  <div className='flag-line'>
+                    <label className='label-cadastro'>ativo:</label><input type='checkbox' className='checkbox-cadastro' onChange={handleAtivo}></input>
+                  </div>
+                  
+                  <div className='flag-line'>
+                    <label className='hidden span-cadastro'>usuNecessitatrocarsenha</label>
+                  </div>
+                </div>
+
+                
                 <button className=" outline-btn" type='submit'>Salvar</button>
             </form>
   

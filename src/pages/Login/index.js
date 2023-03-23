@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, Component } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import md5 from 'md5'
 
 import { AuthContext } from '../../contexts/auth'
 

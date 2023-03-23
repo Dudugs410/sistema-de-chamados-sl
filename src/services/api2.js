@@ -4,6 +4,12 @@ import axios from 'axios'
 
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJHUlVDT0RJR08iOjIsIlNFRENPRElHTyI6MiwiTk9NRSI6InRlc3RlMiIsIkVNQUlMIjoiZW1haWxAdGVzdGUyLmNvbSIsIkxPR0lOIjoidGVzdGUyIiwiU0VOSEEiOiJzZW5oYTIiLCJORUNFU1NJVEFUUk9DQVNFTkhBIjpmYWxzZSwiQ09OVEFCTE9RVUVBREEiOmZhbHNlLCJVU1VBUklPSU5TRVJDQU8iOjIsIkRBVEFJTlNFUkNBTyI6IjIwMTgtMDgtMjJUMTc6MDI6MDkuODMzIiwiVVNVQVJJT01PRElGSUNBQ0FPIjoyLCJEQVRBTU9ESUZJQ0FDQU8iOiIyMDE4LTA4LTIyVDE3OjAyOjA5LjgzMyIsIkFUSVZPIjp0cnVlfQ.1mJGcsMMmpRRjyLyeysgxx8vRtBE5Sz0nzkY4QTSFYc'
 
+export const config = { headers:{ Authorization:`Bearer ${accessToken}`} }
+
+export const apiURL = () => {
+  return('https://app.timmit.com.br/v2/api/usuario')
+}
+
 const api = axios.create({
   baseURL: 'https://app.timmit.com.br/v2/api/usuario',
 

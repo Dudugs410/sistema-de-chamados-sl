@@ -1,3 +1,59 @@
+
 .outline-btn{
     border: solid white 2px;
+}
+
+.div-dropdown{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    max-width: 100%;
+}
+
+.div-selects>.div-dropdown>.select-cadastro:not(:first-child){
+    margin-left: 10%;
+}
+
+.div-flags{
+    display: flex;
+    flex-direction: column;
+}
+
+.flag-line{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.select-cadastro{
+    width: 90%;
+}
+
+.hidden{
+    display: none;
+}
+
+.checkbox-cadastro{
+    position: relative;
+    margin-left: 30%;
+    justify-content: right;
+    float: right;
+    color: yellowgreen !important;
+    transform: scale(1.5)
+}
+
+.checkbox-cadastro:checked{
+    color:yellowgreen;
+}
+
+.checkbox-cadastro:hover{
+    cursor: pointer;
+}
+
+.span-cadastro{
+    
+}
+
+.label-cadastro{
+    width: 60%;
+    display: inline-block;
 }
