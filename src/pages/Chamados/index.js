@@ -67,8 +67,7 @@ const Chamados = () =>{
                             <td data-label="Detalhes"><button className="new2" onClick={ () => toggleModal()}><FiZoomIn color='#FFF' size={24}/></button></td>
                         </tr>
                     </tbody>
-            </table>
-                                
+            </table>   
             </div>
             
         {showPostModal && (

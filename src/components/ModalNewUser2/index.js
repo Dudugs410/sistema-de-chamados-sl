@@ -21,7 +21,6 @@ export default function ModalNewUser2({ close }){
     const [usuContaBloqueada, setUsuContaBloqueada] = useState(false)
     const [usuNecessitatrocarsenha, setUsunecessitatrocarsenha] = useState(false)
     const [ativo, setAtivo] = useState(true)
-    const [grucodgigoNavigation, setGrucodigoNavigation] = useState(null)
     
     const novoUsuario = {
         
@@ -101,7 +100,7 @@ export default function ModalNewUser2({ close }){
               
                 <div className='div-flags'>
                   <div className='flag-line'>
-                    <label className='label-cadastro'>usuContaBloqueada:</label><input type='checkbox' className='checkbox-cadastro' onChange={handleBloqueado}></input>
+                    <label className='label-cadastro'>Conta Bloqueada:</label><input type='checkbox' className='checkbox-cadastro' onChange={handleBloqueado}></input>
                   </div>
                   
                   <div className='flag-line'>
